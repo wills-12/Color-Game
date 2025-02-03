@@ -80,11 +80,16 @@ function handleGuess(e) {
     score++; // Increment the score
     scoreElement.textContent = score; // Update the score display
     gameStatus.textContent = "Correct! Well done!";
-    gameStatus.style.color = "green";
+    gameStatus.style.color = "#4CAF50";
     e.target.classList.add("correct");
+
+    // Automatically start a new round after a short delay
+    setTimeout(() => {
+      initGame();
+    }, 1000);
   } else {
     gameStatus.textContent = "Wrong! Try again!";
-    gameStatus.style.color = "red";
+    gameStatus.style.color = "#FF5252";
     e.target.classList.add("wrong");
     buttons.forEach((button) => {
       if (button.dataset.color === targetColor) {
